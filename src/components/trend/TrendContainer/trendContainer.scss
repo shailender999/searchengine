@@ -1,0 +1,22 @@
+.trending-container {
+    text-align: left;
+    padding-left: 15px;
+    padding-top: 1px;
+}
+.latest-trends-wrapper {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap:10px;
+}
+.trend-image {
+    height: 100px;
+    width: 75px;
+    object-fit: contain;
+}
+.trend-title {
+    font-size: 11px;
+    margin: 0px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+}

@@ -1,0 +1,10 @@
+.shimmer-container {
+    text-align: left;
+    padding-left: 15px;
+    padding-top: 1px;
+}
+.shimmer-wrapper {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap:20px;
+}
