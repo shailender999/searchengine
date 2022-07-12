@@ -1,7 +1,7 @@
 import Search from "../../components/search-bar/Search";
-import './searchPage.scss';
+import './homePage.scss';
 
-function SearchPage() {
+function HomePage() {
     return (  
         <div className="App">
             <div className='container'>
@@ -11,4 +11,4 @@ function SearchPage() {
      );
 }
 
-export default SearchPage;
+export default HomePage;

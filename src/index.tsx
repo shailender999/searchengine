@@ -5,7 +5,8 @@ import './index.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Layout from './Layout';
-import SearchPage from './pages/home/SearchPage';
+import HomePage from './pages/home/HomePage';
+import SearchResult from './pages/search/SearchResult';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,7 +16,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route index element={<SearchPage />} />
+          <Route index element={<HomePage />} />
+          <Route path='search' element={<SearchResult />}>
+            <Route path=':search' element={<SearchResult />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

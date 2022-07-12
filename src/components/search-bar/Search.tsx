@@ -3,10 +3,12 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Trend from '../trend/Trend';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Search() {
     const [searchString, setSearchString] = useState('');
     const [showTrendContainer, setShowTrendContainer] = useState(false);
+    const navigate = useNavigate();
     const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
         if (!showTrendContainer) {
             setShowTrendContainer(true);
@@ -20,6 +22,9 @@ function Search() {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchString(e.target.value);
     }
+    const handleSearchClick = () => {
+        navigate(`search/${searchString}`);
+    }
     return ( 
         <>
             <div className='searchBar-container'>
@@ -27,8 +32,10 @@ function Search() {
                     placeholder='Search'
                     onFocus={handleInputFocus}
                     onChange={handleInputChange}
-                     />
-                <FontAwesomeIcon icon={faSearch} className="searchBar-icon"/> 
+                />
+                <FontAwesomeIcon
+                    onClick={handleSearchClick}
+                    icon={faSearch} className="searchBar-icon" /> 
             </div>
             { showTrendContainer && <Trend search={searchString} /> }
         </>

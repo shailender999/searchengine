@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-import { TrendingEntity } from '../Interfaces/TrendingData';
+import { ProductEntity } from '../Interfaces/ProductEntityInterface';
+import { TrendingEntity } from '../Interfaces/TrendingEntityInterface';
 
 const fakeApiUrl = 'https://fakestoreapi.com/products';
 
@@ -22,5 +23,28 @@ const mapTrendingDataList = ({ data }: AxiosResponse<any[]>): TrendingEntity[] =
         id: item.id,
         title: item.title,
         image: item.image,
+    }))
+};
+export const getSearchedData = (): Promise<ProductEntity[]> => {
+    const promise = new Promise<ProductEntity[]>((resolve, reject) => {
+        try {
+            axios.get<ProductEntity[]>(fakeApiUrl).then(response =>
+                resolve(mapProductDataList(response))
+            );
+        } catch (ex) {
+            reject(ex);
+        }
+    });
+    return promise;
+}
+const mapProductDataList = ({ data }: AxiosResponse<any[]>): ProductEntity[] => {
+    return data.map(item => ({
+        id: item.id,
+        title: item.title,
+        image: item.image,
+        price: item.price,
+        rating: item.rating.rate,
+        starcount: item.rating.count,
+        wishlist: false,
     }))
 };

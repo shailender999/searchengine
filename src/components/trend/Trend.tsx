@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getTrendingData } from '../../api/main';
-import { TrendingEntity } from '../../Interfaces/TrendingData';
+import { TrendingEntity } from '../../Interfaces/TrendingEntityInterface';
 import './trend.scss';
 import TrendShimmer from './Shimmer/TrendShimmer';
 import TrendContainer from './TrendContainer/TrendContainer';
@@ -13,10 +13,8 @@ const Trend: React.FC<{search:string}> = ({search}) => {
             setTrendingData(trendingDataCollection);
             setFetchingData(false);
         }
-        //if (search.length > 0) {
-        fetchAndSetTrendingData();   
-        //}
-    },[search])
+        fetchAndSetTrendingData();
+    }, [search])
     return ( 
         <div className="trendContainer">
             {
