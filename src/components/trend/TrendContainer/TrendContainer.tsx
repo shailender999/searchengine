@@ -20,7 +20,7 @@ function TrendContainer({ trendingdata}: Props) {
             }
             </div>
             <h6 className="mt-2 trend-suggestion-heading">Popular suggestions</h6>
-            <div className="row">
+            <div className="row mb-4 pb-3">
             {
                     trendingdata.map((item) => (
                     <div key={item.id} className="col-12 small">

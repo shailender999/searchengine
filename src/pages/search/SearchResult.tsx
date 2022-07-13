@@ -1,16 +1,21 @@
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { getSearchedData } from "../../api/main";
 import FilterMenu from "../../components/filter/FilterMenu";
 import Product from "../../components/product/Product";
 import Search from "../../components/search-bar/Search";
 import { ProductEntity } from "../../Interfaces/ProductEntityInterface";
+import './searchResult.scss';
 
 function SearchResult() {
     const [searchedData, setSearchedData] = useState<ProductEntity[]>([]);
+    const [fetchingData, setFetchingData] = useState(true);
     useEffect(() => {
         const fetchAndSetData = async () => {
             const trendingDataCollection = await getSearchedData();
             setSearchedData(trendingDataCollection);
+            setFetchingData(false);
         }
         fetchAndSetData();
     }, [])
@@ -26,7 +31,12 @@ function SearchResult() {
                 <FilterMenu />
                 <div className="col-md-10">
                     <div className="row px-2">
-                        <Product product={searchedData} />
+                        {
+                            fetchingData ?
+                                <div className="spinning-icon m-auto"><FontAwesomeIcon icon={faCircleNotch} className="fa-spin" /></div>
+                                :
+                                <Product product={searchedData} />
+                        }
                     </div>
                 </div>
             </div>
