@@ -15,9 +15,7 @@ function Product({ product }: Props) {
             <div className = "col-md-3 col-sm-6" >
                 <div className="product-grid row">
                     <div className="product-image col-12">
-                        <a href="#">
-                            <img className="pic-1" src={item.image} />
-                        </a>
+                        <img className="pic-1" src={item.image} alt={ item.title } />
                         <div className="view-product-label" data-tip="View Product">
                            <span> View Product </span>
                         </div>

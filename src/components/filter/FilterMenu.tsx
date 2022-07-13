@@ -32,7 +32,7 @@ function FilterMenu() {
             <div className="accordion">
                 {
                     filters.map((filter) => (
-                        <div className="accordion-item small" style={{ border: '0px'}}>
+                        <div key={filter.title} className="accordion-item small" style={{ border: '0px'}}>
                             <h5 className="accordion-header">
                             <button
                                 className="accordion-button p-0"
@@ -48,7 +48,7 @@ function FilterMenu() {
                                 <div className="accordion-body p-1 mt-2">
                                     {
                                         filter.filters.map((item) => (
-                                            <label className="form-check">
+                                            <label className="form-check" key={item}>
                                             <input className="form-check-input" type="checkbox" value="" />
                                             <span className="form-check-label">
                                                 {filter.title === 'RATINGS' ? <Rating star={4} starcount={222}/> :item}

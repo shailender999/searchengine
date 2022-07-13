@@ -11,8 +11,8 @@ function TrendContainer({ trendingdata } : Props) {
             <div className="row my-2">
             {
                 trendingdata.map((item) => (
-                    <div className='trend-item col-2 m-auto'>
-                        <img src={item.image} className="trend-image" />
+                    <div key={item.id} className='trend-item col-2 m-auto'>
+                        <img src={item.image} className="trend-image" alt={ item.title } />
                         <p className="trend-title">{item.title.substring(0,12)}</p>
                     </div>
 
@@ -23,7 +23,7 @@ function TrendContainer({ trendingdata } : Props) {
             <div className="row">
             {
                     trendingdata.map((item) => (
-                    <div className="col-12 small">
+                    <div key={item.id} className="col-12 small">
                         <p className="trend-suggestion-title">{ item.title }</p>
                     </div>
                 ))

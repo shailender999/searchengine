@@ -32,6 +32,7 @@ function Search() {
                     placeholder='Search'
                     onFocus={handleInputFocus}
                     onChange={handleInputChange}
+                    onBlur={handleInputBlur}
                 />
                 <FontAwesomeIcon
                     onClick={handleSearchClick}
