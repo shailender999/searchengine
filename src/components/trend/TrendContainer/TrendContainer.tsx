@@ -2,11 +2,11 @@ import { TrendingEntity } from "../../../Interfaces/TrendingEntityInterface";
 import './trendContainer.scss';
 
 interface Props {
-    trendingdata : TrendingEntity[]
+    trendingdata: TrendingEntity[],
 }
-function TrendContainer({ trendingdata } : Props) {
+function TrendContainer({ trendingdata}: Props) {
     return ( 
-        <div className='trending-container container-fluid'>
+        <div className='trending-container col-12'>
             <h6 className="mt-3">Latest Trends</h6>
             <div className="row my-2">
             {

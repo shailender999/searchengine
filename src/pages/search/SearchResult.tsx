@@ -16,16 +16,16 @@ function SearchResult() {
     }, [])
     return (
         <div className="container-fluid">
-            <div className="row">
-                <div className="col-6 m-auto">
-                    <Search  />
+            <div className="row mt-3">
+                <div className="col-md-6 m-auto">
+                    <Search outline={ true } />
                 </div>
             </div>
-            <div className="row">
+            <div className="row px-2">
                 <h4 className="my-2">Search Results</h4>
                 <FilterMenu />
-                <div className="col-9">
-                    <div className="row">
+                <div className="col-md-10">
+                    <div className="row px-2">
                         <Product product={searchedData} />
                     </div>
                 </div>

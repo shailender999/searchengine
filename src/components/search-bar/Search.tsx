@@ -5,18 +5,25 @@ import Trend from '../trend/Trend';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Search() {
+
+interface Props {
+    outline : boolean,
+}
+function Search({outline} : Props) {
     const [searchString, setSearchString] = useState('');
     const [showTrendContainer, setShowTrendContainer] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     const navigate = useNavigate();
     const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
         if (!showTrendContainer) {
             setShowTrendContainer(true);
         }
+        setIsVisible(true);
     }
     const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         //if (!showTrendContainer && searchString == '') {
-            setShowTrendContainer(false);
+        //setShowTrendContainer(false);
+        setIsVisible(false);
         //}
     }
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +35,7 @@ function Search() {
     return ( 
         <>
             <div className='searchBar-container'>
-                <input type="text" className="searchBar"
+                <input type="text" className={ outline ? 'searchBar outline' : 'searchBar' }
                     placeholder='Search'
                     onFocus={handleInputFocus}
                     onChange={handleInputChange}
@@ -38,7 +45,7 @@ function Search() {
                     onClick={handleSearchClick}
                     icon={faSearch} className="searchBar-icon" /> 
             </div>
-            { showTrendContainer && <Trend search={searchString} /> }
+            {showTrendContainer && <Trend search={searchString} visible={isVisible}/> }
         </>
      );
 }

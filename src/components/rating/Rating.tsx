@@ -3,8 +3,8 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
-    star: number,
-    starcount: number
+    star: number | string,
+    starcount?: number
 }
 function Rating({ star, starcount }: Props) {
     const ratingContent = () => {
@@ -19,7 +19,7 @@ function Rating({ star, starcount }: Props) {
             {
                 ratingContent()
             }
-            <span style={{ fontSize: '12px', color:'grey', marginTop:'-3px', marginLeft:'3px'}}>({starcount})</span>
+            {starcount && <span style={{ fontSize: '12px', color: 'grey', marginTop: '-3px', marginLeft: '3px' }}>({starcount})</span>}
         </div>
      );
 }
